@@ -24,7 +24,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            //消息生产
+            //消息消费
             consume();
         } catch (Exception e) {
             e.printStackTrace();
@@ -33,7 +33,7 @@ public class Main {
 
     private static void consume() throws IOException {
         Properties props = new Properties();
-        props.put("zookeeper.connect", "192.168.0.75:2181");
+        props.put("zookeeper.connect", "e10:12299");
         props.put("group.id", "1");
         props.put("zookeeper.session.timeout.ms", "400");
         props.put("zookeeper.sync.time.ms", "200");
@@ -53,7 +53,7 @@ public class Main {
                 Decoder decoder = DecoderFactory.get().binaryDecoder(it.next().message(), null);
                 RcvblFlow msg = reader.read(null, decoder);
 
-                System.out.println(msg.getRcvblAmtId() + "," + msg.getConsNo() + "," + msg.getReleasedDate());
+//                System.out.println(msg.getRcvblAmtId() + "," + msg.getConsNo() + "," + msg.getReleasedDate());
 
             } catch (Exception e) {
                 e.printStackTrace();
